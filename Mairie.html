@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cassaigne - Village du Gers</title>
+  <meta name="description" content="Site communal moderne de Cassaigne dans le Gers : mairie, actualités, événements, patrimoine, localités voisines et informations pratiques." />
+  <meta name="keywords" content="Cassaigne, Gers, mairie, village, Armagnac, patrimoine, actualités communales, événements" />
+  <meta name="author" content="Commune de Cassaigne" />
+  <meta property="og:title" content="Cassaigne - Village du Gers" />
+  <meta property="og:description" content="Découvrez Cassaigne, son patrimoine, sa mairie, ses actualités et ses événements." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4efe5;
+      color: #13251b;
+    }
+
+    header {
+      height: 82px;
+      background: #fffdf5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 38px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .logo strong {
+      display: block;
+      font-size: 28px;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+
+    .logo span {
+      font-size: 15px;
+      color: #3e4a41;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    nav button {
+      border: none;
+      background: transparent;
+      font-weight: 700;
+      color: #102019;
+      cursor: pointer;
+      font-size: 14px;
+      padding-bottom: 8px;
+    }
+
+    nav button.active {
+      border-bottom: 3px solid #123623;
+    }
+
+    .official-btn {
+      background: linear-gradient(135deg, #123623, #1f5a3a);
+      color: white;
+      text-decoration: none;
+      padding: 14px 22px;
+      border-radius: 6px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      border: none;
+      display: inline-block;
+    }
+
+    .official-btn:hover {
+      background: linear-gradient(135deg, #0d2b1b, #174c31);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    .commune-btn {
+      background: linear-gradient(135deg, #3e4a41, #66705f);
+    }
+
+    .commune-btn:hover {
+      background: linear-gradient(135deg, #2d362f, #535c4d);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      min-height: 520px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.70), rgba(0,0,0,0.15)),
+        url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80") center/cover;
+      display: flex;
+      align-items: center;
+      padding: 60px 38px;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 560px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: 76px;
+      line-height: 0.95;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 span {
+      display: block;
+      font-size: 48px;
+    }
+
+    .hero p {
+      font-size: 21px;
+      line-height: 1.55;
+      margin-bottom: 34px;
+      max-width: 420px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      border: none;
+      cursor: pointer;
+      padding: 17px 24px;
+      border-radius: 5px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .btn-primary {
+      background: #123623;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #eee6d6;
+      color: #172119;
+    }
+
+    .home-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.4fr 0.9fr;
+      gap: 28px;
+      padding: 28px;
+    }
+
+    .panel {
+      background: #fffaf0;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .panel img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .panel-content {
+      padding: 24px;
+    }
+
+    .panel h2,
+    .panel h3 {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      margin-bottom: 16px;
+      color: #172119;
+      font-weight: 500;
+    }
+
+    .panel p {
+      line-height: 1.65;
+      color: #2c332d;
+      margin-bottom: 18px;
+    }
+
+    .news-panel {
+      padding: 24px;
+      background: #fffaf0;
+      border-left: 1px solid #ddd4c1;
+      border-right: 1px solid #ddd4c1;
+    }
+
+    .news-panel h3 {
+      font-size: 22px;
+      margin-bottom: 22px;
+      font-family: Arial, sans-serif;
+    }
+
+    .news-item {
+      margin-bottom: 17px;
+    }
+
+    .news-item strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .news-item span {
+      font-size: 13px;
+      color: #5f625d;
+    }
+
+    .link-btn {
+      margin-top: 16px;
+      border: none;
+      background: transparent;
+      color: #123623;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .dark-panel {
+      background: #0d3a25;
+      color: white;
+    }
+
+    .dark-panel .panel-content {
+      background: #0d3a25;
+    }
+
+    .dark-panel h2,
+    .dark-panel p {
+      color: white;
+    }
+
+    .dark-panel .btn-secondary {
+      background: #eee6d6;
+      color: #102019;
+      margin-top: 8px;
+    }
+
+    .content-page {
+      display: none;
+      max-width: 1100px;
+      margin: 34px auto;
+      padding: 34px;
+      background: #fffaf0;
+      border-radius: 8px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .content-page.active {
+      display: block;
+    }
+
+    .content-page h2 {
+      font-family: Georgia, serif;
+      font-size: 42px;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .content-page p {
+      line-height: 1.75;
+      margin-bottom: 16px;
+      color: #333b35;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: #f3ecdc;
+      border-radius: 6px;
+      padding: 20px;
+      border: 1px solid #ded3bc;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #123623;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 12px;
+      color: #123623;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    .demarche-link {
+      display: inline-block;
+      margin-top: 14px;
+      background: #123623;
+      color: white !important;
+      padding: 11px 14px;
+      border-radius: 5px;
+      text-decoration: none !important;
+      font-weight: 700;
+    }
+
+    .demarche-link:hover {
+      background: #0d2b1b;
+    }
+
+    .photo-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    .photo-row img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    iframe {
+      width: 100%;
+      height: 360px;
+      border: none;
+      border-radius: 6px;
+      margin-top: 20px;
+    }
+
+    .localites-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .localite {
+      padding: 17px;
+      background: #f3ecdc;
+      border: 1px solid #ded3bc;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: left;
+      font-family: Arial, sans-serif;
+    }
+
+    .localite.active-place {
+      background: #123623;
+      color: white;
+    }
+
+    .place-detail {
+      background: #f3ecdc;
+      border-radius: 6px;
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+
+    .chatbot-button {
+      position: fixed;
+      right: 26px;
+      bottom: 26px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 5px solid #fffaf0;
+      background: #123623;
+      color: white;
+      font-size: 25px;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .chat-help {
+      position: fixed;
+      right: 90px;
+      bottom: 32px;
+      background: #123623;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 30px;
+      z-index: 99;
+      font-size: 14px;
+    }
+
+    .chatbot {
+      position: fixed;
+      right: 26px;
+      bottom: 100px;
+      width: 350px;
+      max-width: calc(100vw - 52px);
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+      display: none;
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    .chatbot.open {
+      display: block;
+    }
+
+    .chatbot-header {
+      background: #123623;
+      color: white;
+      padding: 15px;
+      font-weight: 700;
+    }
+
+    .chatbot-messages {
+      height: 280px;
+      overflow-y: auto;
+      padding: 14px;
+      background: #f5f0e6;
+    }
+
+    .message {
+      padding: 10px 12px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      max-width: 85%;
+      line-height: 1.45;
+    }
+
+    .bot {
+      background: white;
+      border: 1px solid #ddd4c1;
+    }
+
+    .user {
+      margin-left: auto;
+      background: #dce8de;
+    }
+
+    .chatbot-form {
+      display: flex;
+      padding: 10px;
+      gap: 8px;
+    }
+
+    .chatbot-form input {
+      flex: 1;
+      border: 1px solid #ccc;
+      border-radius: 999px;
+      padding: 10px;
+    }
+
+    .chatbot-form button {
+      border: none;
+      border-radius: 999px;
+      background: #123623;
+      color: white;
+      padding: 10px 13px;
+      cursor: pointer;
+    }
+
+    .admin-box, .contact-form, .newsletter-box, .legal-box, .cookie-banner {
+      background: #f3ecdc;
+      border: 1px solid #ded3bc;
+      border-radius: 8px;
+      padding: 22px;
+      margin-top: 22px;
+    }
+
+    .admin-box input, .admin-box textarea, .contact-form input, .contact-form textarea, .newsletter-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 14px;
+      border: 1px solid #cfc4aa;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+    }
+
+    .admin-box textarea, .contact-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .admin-box button, .contact-form button, .newsletter-box button, .legal-box button, .cookie-banner button {
+      border: none;
+      background: #123623;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    .admin-list article {
+      background: #fffaf0;
+      border: 1px solid #ded3bc;
+      border-radius: 6px;
+      padding: 16px;
+      margin-top: 14px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    }
+
+    .cookie-banner {
+      position: fixed;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      background: #fffaf0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      z-index: 200;
+      display: none;
+    }
+
+    .cookie-banner.show {
+      display: block;
+    }
+
+    @media (max-width: 1050px) {
+      header {
+        height: auto;
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .home-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .hero h1 span {
+        font-size: 32px;
+      }
+
+      .hero {
+        min-height: 440px;
+      }
+
+      .official-btn {
+        display: none;
+      }
+
+      .chat-help {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <strong>CASSAIGNE</strong>
+      <span>Village du Gers</span>
+    </div>
+
+    <nav>
+      <button class="active" onclick="showPage('accueil', this)">Accueil</button>
+      <button onclick="showPage('village', this)">Le village</button>
+      <button onclick="showPage('histoire', this)">Histoire</button>
+      <button onclick="showPage('mairie', this)">Mairie</button>
+      <button onclick="showPage('demarches', this)">Démarches</button>
+      <button onclick="showPage('localites', this)">Villages autour</button>
+      <button onclick="showPage('actualites', this)">Actualités</button>
+      <button onclick="showPage('contact', this)">Contact</button>
+    </nav>
+
+    <div class="header-actions">
+      <button class="official-btn" onclick="showPage('mairie', document.querySelectorAll('nav button')[3])">
+        Informations & services municipaux →
+      </button>
+      <a class="official-btn commune-btn" href="https://www.communes.com/occitanie/gers/cassaigne_32100/" target="_blank">
+        Fiche commune →
+      </a>
+    </div>
+  </header>
+
+  <section id="home" class="home active">
+    <section class="hero">
+      <div class="hero-content">
+        <h1><span>Bienvenue à</span>Cassaigne</h1>
+        <p>Entre histoire, nature et traditions, découvrez un village authentique au cœur du Gers.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="showPage('village', document.querySelectorAll('nav button')[1])">Découvrir le village</button>
+          <button class="btn-secondary" onclick="showPage('evenements', document.querySelectorAll('nav button')[5])">Voir les événements</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-layout">
+      <article class="panel">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Village du Gers">
+        <div class="panel-content">
+          <h2>Un village au cœur du Gers</h2>
+          <p>Cassaigne séduit par son patrimoine, son cadre naturel préservé et son art de vivre gascon. Flânez dans ses ruelles, découvrez son histoire et profitez de la convivialité de ses habitants.</p>
+          <button class="btn-primary" onclick="showPage('village', document.querySelectorAll('nav button')[1])">En savoir plus</button>
+        </div>
+      </article>
+
+      <aside class="news-panel">
+        <h3>Actualités</h3>
+        <div class="news-item"><strong>Chasse aux œufs de Pâques</strong><span>19 avril 2026</span></div>
+        <div class="news-item"><strong>Théâtre à Cassaigne</strong><span>25 avril 2026</span></div>
+        <div class="news-item"><strong>VineArt en Gascogne</strong><span>Juin 2026</span></div>
+        <button class="link-btn" onclick="showPage('actualites', document.querySelectorAll('nav button')[4])">Toutes les actualités →</button>
+
+        <h3 style="margin-top: 38px;">Événements à venir</h3>
+        <div class="news-item"><strong>22 juin 2025</strong><span>Daim’guerie à Cassaigne</span></div>
+        <div class="news-item"><strong>11 octobre 2025</strong><span>Repas des vendanges</span></div>
+        <button class="link-btn" onclick="showPage('evenements', document.querySelectorAll('nav button')[5])">Voir le calendrier →</button>
+      </aside>
+
+      <article class="panel dark-panel">
+        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80" alt="Vignerons et vignoble">
+        <div class="panel-content">
+          <h2>Terre de vigne et d’Armagnac</h2>
+          <p>Cassaigne est aussi le berceau du Château de Cassaigne et de son exploitation viticole. Un savoir-faire local au service des vins et Armagnacs du territoire.</p>
+          <button class="btn-secondary" onclick="showPage('histoire', document.querySelectorAll('nav button')[2])">Découvrir le domaine</button>
+        </div>
+      </article>
+    </section>
+  </section>
+
+  <main>
+    <section id="village" class="content-page">
+      <h2>Le village</h2>
+      <p>Cassaigne est un village typique du Gers, situé au cœur du Condomois, dans un environnement rural marqué par les coteaux, les terres agricoles et les paysages viticoles. Le village se distingue par son cadre de vie paisible, son authenticité et son lien fort avec les traditions gasconnes.</p>
+
+      <p>La commune offre un cadre naturel préservé, propice à la promenade et à la découverte. Les habitants y entretiennent un lien social important, renforcé par les événements locaux, la vie associative et les rencontres autour du patrimoine et du terroir.</p>
+
+      <div class="photo-row">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80">
+      </div>
+    </section>
+
+    <section id="histoire" class="content-page">
+      <h2>Histoire & Patrimoine</h2>
+      <p>Cassaigne est une commune rurale du nord du Gers, ancrée dans l’ancien territoire du Condomois, lui-même rattaché à la Gascogne historique. Cette identité gasconne se retrouve dans les paysages, le bâti, les traditions agricoles et la place importante occupée par la vigne.</p>
+      <p>Le village s’est développé dans un environnement rural marqué par les coteaux, les terres agricoles et les domaines viticoles. Sa position proche de Condom et de la Ténarèze l’inscrit dans un territoire de passage, de culture et de production, notamment autour des vins de Gascogne et de l’Armagnac.</p>
+      <p>Le Château de Cassaigne occupe une place centrale dans cette identité. Il représente à la fois un marqueur patrimonial, une trace de l’histoire seigneuriale locale et un domaine viticole qui participe aujourd’hui encore à l’image du village. Le château, l’église et les vestiges anciens composent un ensemble qui rappelle l’évolution du village à travers les siècles.</p>
+      <div class="photo-row">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" alt="Paysage du Gers">
+        <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1200&q=80" alt="Vignes et Armagnac">
+      </div>
+      <div class="cards">
+        <div class="card"><h3>Le château</h3><p>Un élément majeur du patrimoine local, lié à l’histoire médiévale, aux anciennes seigneuries et à la vie du village.</p></div>
+        <div class="card"><h3>Exploitation viticole</h3><p>Le domaine participe à la tradition viticole de Cassaigne, avec un savoir-faire associé aux vins de Gascogne et à l’Armagnac.</p></div>
+        <div class="card"><h3>L’église</h3><p>Un repère historique au cœur du village, témoin de la vie sociale et religieuse locale.</p></div>
+        <div class="card"><h3>La Gascogne</h3><p>Le village conserve une forte identité gasconne : paysages vallonnés, ruralité, patrimoine bâti et traditions du terroir.</p></div>
+      </div>
+    </section>
+
+    <section id="mairie" class="content-page">
+      <h2>Mairie</h2>
+      <p><strong>Adresse :</strong> Le Village, 32100 Cassaigne</p>
+      <p><strong>Email :</strong> mairiedecassaigne@wanadoo.fr</p>
+      <p><strong>Téléphone :</strong> 05 62 28 27 87</p>
+      <p><strong>Département :</strong> Gers · <strong>Région :</strong> Occitanie</p>
+      <p><strong>Intercommunalité :</strong> Communauté de communes de la Ténarèze</p>
+      <p><strong>Maire :</strong> Sophie Pujos</p>
+      <iframe src="https://www.google.com/maps?q=Mairie%20de%20Cassaigne%2032100&output=embed"></iframe>
+    </section>
+
+    <section id="meteo" class="content-page">
+      <h2>Météo & informations</h2>
+      <p>Cassaigne bénéficie d’un climat typique du sud-ouest, alternant périodes ensoleillées, passages nuageux et épisodes pluvieux. Les températures restent globalement douces, avec des étés chauds et des hivers modérés.</p>
+
+      <p>La commune compte environ 225 habitants et s’étend sur un territoire de 8,58 km². Située dans le Gers, elle s’inscrit dans le paysage vallonné de la Gascogne, à proximité de Condom et des territoires viticoles de l’Armagnac-Ténarèze.</p>
+
+      <p>Ces caractéristiques font de Cassaigne un village à taille humaine, où la qualité de vie repose sur un équilibre entre nature, patrimoine et vie locale.</p>
+    </section>
+
+    <section id="demarches" class="content-page">
+      <h2>Démarches administratives</h2>
+      <p>Cette rubrique permet aux habitants d’accéder directement aux services officiels pour effectuer leurs démarches en ligne. Les liens ci-dessous redirigent vers Service-Public.fr, le portail officiel de l’administration française.</p>
+
+      <p>Pour les démarches propres à la commune, il reste conseillé de contacter la mairie de Cassaigne afin d’obtenir les informations les plus adaptées à votre situation.</p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>État civil</h3>
+          <p>Demandes d’actes de naissance, mariage ou décès. Ces documents peuvent être nécessaires pour des démarches familiales, administratives ou notariales.</p>
+          <a class="demarche-link" href="https://www.service-public.fr/particuliers/vosdroits/N359" target="_blank">Faire une demande →</a>
+        </div>
+
+        <div class="card">
+          <h3>Urbanisme</h3>
+          <p>Permis de construire, déclaration préalable de travaux, certificat d’urbanisme et informations sur les règles applicables aux projets de construction ou de rénovation.</p>
+          <a class="demarche-link" href="https://www.service-public.fr/particuliers/vosdroits/N319" target="_blank">Accéder aux démarches →</a>
+        </div>
+
+        <div class="card">
+          <h3>Élections</h3>
+          <p>Inscription sur les listes électorales, vérification de votre situation électorale et informations pratiques sur les scrutins.</p>
+          <a class="demarche-link" href="https://www.service-public.fr/particuliers/vosdroits/R16396" target="_blank">S’inscrire en ligne →</a>
+        </div>
+
+        <div class="card">
+          <h3>Carte d’identité et passeport</h3>
+          <p>Pré-demande, renouvellement, perte ou vol de carte nationale d’identité et de passeport. La démarche se prépare en ligne avant le rendez-vous en mairie équipée.</p>
+          <a class="demarche-link" href="https://www.service-public.fr/particuliers/vosdroits/N19810" target="_blank">Faire une demande →</a>
+        </div>
+
+        <div class="card">
+          <h3>Changement d’adresse</h3>
+          <p>Déclarer un changement d’adresse auprès de plusieurs organismes publics : impôts, sécurité sociale, retraite, carte grise et autres services.</p>
+          <a class="demarche-link" href="https://www.service-public.fr/particuliers/vosdroits/R11193" target="_blank">Déclarer un changement →</a>
+        </div>
+
+        <div class="card">
+          <h3>Recensement citoyen</h3>
+          <p>Le recensement citoyen est obligatoire pour les jeunes Français à partir de 16 ans. Il permet notamment d’être convoqué à la Journée Défense et Citoyenneté.</p>
+          <a class="demarche-link" href="https://www.service-public.fr/particuliers/vosdroits/F870" target="_blank">Voir la démarche →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="actualites" class="content-page">
+      <h2>Actualités communales</h2>
+      <p>La vie communale de Cassaigne est rythmée par de nombreux événements, initiatives locales et informations municipales. Cette rubrique permet de suivre l’actualité du village, qu’il s’agisse des actions de la mairie, des événements culturels, des projets locaux ou des moments de convivialité organisés tout au long de l’année.</p>
+
+      <p>Les événements se déroulent souvent autour du château ou dans les espaces publics du village, renforçant le lien entre les habitants et valorisant le patrimoine. Les initiatives locales mettent également en avant le terroir, les producteurs et la richesse culturelle du Gers.</p>
+
+      <div id="dynamicNews" class="cards"></div>
+    </section>
+
+    <section id="evenements" class="content-page">
+      <h2>Événements</h2>
+      <p>Les événements de Cassaigne mettent en valeur la convivialité du village, son patrimoine et son lien avec le château et le vignoble.</p>
+      <div class="cards">
+        <div class="card"><h3>Chasse aux œufs</h3><p>Animation familiale au Château de Cassaigne, dans un cadre patrimonial apprécié des habitants et visiteurs.</p></div>
+        <div class="card"><h3>Daim’guerie</h3><p>Animation sportive et conviviale autour du village, des chemins ruraux et des paysages viticoles.</p></div>
+        <div class="card"><h3>Repas des vendanges</h3><p>Moment de partage autour du terroir, de la vigne et des traditions gasconnes.</p></div>
+        <div class="card"><h3>Concerts et théâtre</h3><p>Rendez-vous culturels dans la cour du château, notamment en période estivale.</p></div>
+        <div class="card"><h3>Marchés et artisanat</h3><p>Découverte des producteurs, créateurs, artisans et savoir-faire locaux du territoire.</p></div>
+        <div class="card"><h3>Actions citoyennes</h3><p>Collectes, environnement, solidarité et initiatives portées par les habitants et associations.</p></div>
+      </div>
+    </section>
+
+    <section id="localites" class="content-page">
+      <h2>Villages autour de Cassaigne</h2>
+      <p>Cette rubrique permet de situer Cassaigne dans son territoire proche. Cliquez sur un village pour afficher sa présentation, ses spécialités et sa position sur la carte.</p>
+
+      <div class="localites-grid">
+        <button class="localite active-place" onclick="selectLocalite('cassaigne', this)">Cassaigne</button>
+        <button class="localite" onclick="selectLocalite('condom', this)">Condom</button>
+        <button class="localite" onclick="selectLocalite('larressingle', this)">Larressingle</button>
+        <button class="localite" onclick="selectLocalite('valence', this)">Valence-sur-Baïse</button>
+        <button class="localite" onclick="selectLocalite('mouchan', this)">Mouchan</button>
+        <button class="localite" onclick="selectLocalite('gondrin', this)">Gondrin</button>
+        <button class="localite" onclick="selectLocalite('beraut', this)">Béraut</button>
+        <button class="localite" onclick="selectLocalite('mansencome', this)">Mansencôme</button>
+      </div>
+
+      <div id="placeDetail" class="place-detail"></div>
+
+      <h3 style="margin-top:24px; color:#123623;">Carte du territoire</h3>
+      <p>La carte ci-dessous se met à jour automatiquement selon le village sélectionné.</p>
+      <iframe id="localiteMap" src="https://www.google.com/maps?q=Cassaigne%2032100%20Gers&output=embed"></iframe>
+    </section>
+
+    <section id="services" class="content-page">
+      <h2>Infos pratiques</h2>
+      <p>Cette rubrique regroupe les informations essentielles pour les habitants et les visiteurs. Elle permet de mieux comprendre le fonctionnement de la commune, ses services et les ressources disponibles sur le territoire.</p>
+
+      <p>Cassaigne s’inscrit dans un environnement rural dynamique où le lien social, les circuits courts et le patrimoine jouent un rôle important dans la vie quotidienne.</p>
+
+      <div class="cards">
+        <div class="card"><h3>Vie locale</h3><p>La commune met en place des actions pour maintenir un cadre de vie agréable et renforcer le lien entre les habitants. Des événements, réunions et initiatives participatives sont régulièrement organisés.</p></div>
+        <div class="card"><h3>Commerces et producteurs</h3><p>Le territoire s’appuie sur des producteurs locaux, des artisans et des circuits courts. Le vignoble et l’Armagnac occupent une place importante dans l’économie locale.</p></div>
+        <div class="card"><h3>Patrimoine et tourisme</h3><p>Le Château de Cassaigne constitue un pôle d’attractivité majeur. Il attire visiteurs et amateurs de patrimoine tout en valorisant le savoir-faire viticole du territoire.</p></div>
+        <div class="card"><h3>Vie associative</h3><p>Les associations locales contribuent à dynamiser le village à travers des activités sportives, culturelles et sociales accessibles à tous.</p></div>
+        <div class="card"><h3>Environnement</h3><p>La commune s’inscrit dans une démarche de préservation des paysages, des espaces naturels et du cadre de vie typique du Gers.</p></div>
+        <div class="card"><h3>Informations utiles</h3><p>Les habitants peuvent accéder à des informations pratiques concernant les services publics, les démarches administratives et les événements locaux.</p></div>
+      </div>
+    </section>
+
+    <section id="galerie" class="content-page">
+      <h2>Galerie photo</h2>
+      <p>Une galerie permet de valoriser le village, le patrimoine, les paysages du Gers et les événements communaux. Elle rend le site plus vivant et plus attractif pour les habitants comme pour les visiteurs.</p>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" alt="Paysage rural du Gers">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Village rural">
+        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80" alt="Vignoble">
+        <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1200&q=80" alt="Vignes et terroir">
+      </div>
+    </section>
+
+    <section id="admin" class="content-page">
+      <h2>Espace administrateur</h2>
+      <p>Cet espace permet de simuler la publication d’actualités sans toucher au code. Les actualités sont enregistrées dans le navigateur avec localStorage. Pour une vraie mairie, cette partie devra ensuite être remplacée par un vrai espace sécurisé avec mot de passe serveur et base de données.</p>
+
+      <div class="admin-box">
+        <h3>Ajouter une actualité</h3>
+        <label>Titre</label>
+        <input id="newsTitle" type="text" placeholder="Ex : Réunion du conseil municipal">
+        <label>Date</label>
+        <input id="newsDate" type="text" placeholder="Ex : 15 mai 2026">
+        <label>Contenu</label>
+        <textarea id="newsContent" placeholder="Texte de l’actualité..."></textarea>
+        <button onclick="addNews()">Publier l’actualité</button>
+        <button onclick="clearNews()">Supprimer les actualités ajoutées</button>
+      </div>
+
+      <div class="admin-box admin-list">
+        <h3>Actualités publiées</h3>
+        <div id="adminNewsList"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="content-page">
+      <h2>Contact</h2>
+      <p>Pour toute demande, contactez la mairie de Cassaigne.</p>
+      <p><strong>Email :</strong> mairiedecassaigne@wanadoo.fr</p>
+      <p><strong>Téléphone :</strong> 05 62 28 27 87</p>
+
+      <div class="contact-form">
+        <h3>Formulaire de contact</h3>
+        <p>Ce formulaire prépare un email à envoyer à la mairie. Pour un vrai site en ligne, il pourra être relié à un service d’envoi sécurisé.</p>
+        <input id="contactName" type="text" placeholder="Votre nom">
+        <input id="contactEmail" type="email" placeholder="Votre email">
+        <textarea id="contactMessage" placeholder="Votre message"></textarea>
+        <button onclick="sendContactEmail()">Préparer l’email</button>
+      </div>
+
+      <div class="newsletter-box">
+        <h3>Recevoir les informations communales</h3>
+        <p>Ajoutez votre adresse email pour simuler une inscription aux informations de la commune.</p>
+        <input id="newsletterEmail" type="email" placeholder="Votre adresse email">
+        <button onclick="subscribeNewsletter()">S’inscrire</button>
+        <p id="newsletterMessage"></p>
+      </div>
+    </section>
+
+    <section id="mentions" class="content-page">
+      <h2>Mentions légales & confidentialité</h2>
+      <div class="legal-box">
+        <h3>Éditeur du site</h3>
+        <p>Commune de Cassaigne, Le Village, 32100 Cassaigne. Email : mairiedecassaigne@wanadoo.fr. Téléphone : 05 62 28 27 87.</p>
+        <h3>Données personnelles</h3>
+        <p>Les informations saisies dans les formulaires servent uniquement à répondre aux demandes des utilisateurs. Elles ne doivent pas être revendues, partagées ou utilisées à d’autres fins sans consentement.</p>
+        <h3>Cookies</h3>
+        <p>Ce site peut utiliser des cookies strictement nécessaires au fonctionnement de certaines préférences, comme l’acceptation du bandeau d’information.</p>
+        <h3>Responsabilité</h3>
+        <p>Les informations présentes sur ce site sont fournies à titre indicatif et doivent être confirmées auprès de la mairie pour les démarches officielles.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="cookieBanner" class="cookie-banner">
+    <strong>Respect de la confidentialité</strong>
+    <p>Ce site utilise uniquement des éléments nécessaires à son fonctionnement et peut mémoriser certaines préférences dans votre navigateur.</p>
+    <button onclick="acceptCookies()">J’ai compris</button>
+    <button onclick="showPage('mentions', null)">En savoir plus</button>
+  </div>
+
+  <div class="chat-help"><strong>Besoin d’aide ?</strong><br>Posez-moi votre question !</div>
+  <button class="chatbot-button" onclick="toggleChatbot()">…</button>
+
+  <div id="chatbot" class="chatbot">
+    <div class="chatbot-header">Assistant de la commune</div>
+    <div id="chatMessages" class="chatbot-messages">
+      <div class="message bot">Bonjour. Je peux vous orienter vers la mairie, les événements, le château ou les villages voisins.</div>
+    </div>
+    <form class="chatbot-form" onsubmit="sendMessage(event)">
+      <input id="chatInput" type="text" placeholder="Votre question..." />
+      <button type="submit">OK</button>
+    </form>
+  </div>
+
+  <script>
+    const home = document.getElementById("home");
+    const pages = document.querySelectorAll(".content-page");
+    const navButtons = document.querySelectorAll("nav button");
+    const defaultNews = [
+      { title: "Chasse aux œufs au château", date: "Avril 2026", content: "Un rendez-vous familial organisé dans le parc du Château de Cassaigne." },
+      { title: "Théâtre à Cassaigne", date: "Été 2026", content: "Des soirées culturelles organisées dans un cadre patrimonial unique." },
+      { title: "VineArt en Gascogne", date: "Juin 2026", content: "Un événement autour de l’art, de la musique, du terroir et du patrimoine." }
+    ];
+
+    const localites = {
+      cassaigne: {
+        title: "Cassaigne",
+        description: "Cassaigne est le village central du site. La commune est marquée par son château, son environnement rural, ses paysages viticoles et son lien avec l’Armagnac. Elle représente bien l’identité gasconne : patrimoine, tranquillité et terroir.",
+        specialites: "Château de Cassaigne, vins de Gascogne, Armagnac, paysages viticoles, patrimoine rural.",
+        map: "https://www.google.com/maps?q=Cassaigne%2032100%20Gers&output=embed"
+      },
+      condom: {
+        title: "Condom",
+        description: "Condom est la ville principale du secteur. Ancienne cité épiscopale traversée par la Baïse, elle est connue pour son centre ancien, sa cathédrale Saint-Pierre, son port et ses maisons d’Armagnac.",
+        specialites: "Armagnac, Floc de Gascogne, marchés, patrimoine religieux, gastronomie gasconne.",
+        map: "https://www.google.com/maps?q=Condom%2032100%20Gers&output=embed"
+      },
+      larressingle: {
+        title: "Larressingle",
+        description: "Larressingle est une cité fortifiée médiévale remarquable, souvent surnommée la petite Carcassonne du Gers. Ses remparts, son donjon et ses maisons de pierre en font un lieu touristique incontournable autour de Cassaigne.",
+        specialites: "Patrimoine médiéval, remparts, tourisme historique, Armagnac et produits du terroir.",
+        map: "https://www.google.com/maps?q=Larressingle%20Gers&output=embed"
+      },
+      valence: {
+        title: "Valence-sur-Baïse",
+        description: "Valence-sur-Baïse est une bastide gersoise située près de la vallée de la Baïse. Elle est surtout connue pour l’abbaye de Flaran, l’un des grands sites patrimoniaux du département.",
+        specialites: "Abbaye de Flaran, bastide, vallée de la Baïse, foie gras, Armagnac et gastronomie locale.",
+        map: "https://www.google.com/maps?q=Valence-sur-Ba%C3%AFse%20Gers&output=embed"
+      },
+      mouchan: {
+        title: "Mouchan",
+        description: "Mouchan est un village rural proche de Cassaigne, situé dans un environnement typique du Condomois. Il offre un cadre calme, entouré de terres agricoles, de routes de campagne et de paysages gascons.",
+        specialites: "Patrimoine rural, promenades, produits gascons, proximité avec Cassaigne et Condom.",
+        map: "https://www.google.com/maps?q=Mouchan%2032100%20Gers&output=embed"
+      },
+      gondrin: {
+        title: "Gondrin",
+        description: "Gondrin est une commune gersoise liée au terroir, aux vignobles et aux paysages de l’Armagnac. Elle fait partie des localités qui participent à l’identité viticole et rurale du territoire.",
+        specialites: "Vins de Gascogne, Armagnac, produits du terroir, randonnées et paysages agricoles.",
+        map: "https://www.google.com/maps?q=Gondrin%20Gers&output=embed"
+      },
+      beraut: {
+        title: "Béraut",
+        description: "Béraut est un village du Condomois situé dans un cadre rural, proche de Condom et des communes viticoles voisines. Son environnement est marqué par les champs, les coteaux et les routes de campagne.",
+        specialites: "Cuisine gasconne, produits fermiers, vignoble, balades rurales et calme du territoire.",
+        map: "https://www.google.com/maps?q=B%C3%A9raut%20Gers&output=embed"
+      },
+      mansencome: {
+        title: "Mansencôme",
+        description: "Mansencôme est une commune voisine de Cassaigne, située au cœur de paysages gascons. Elle représente le charme des petits villages ruraux du Gers, entre nature, agriculture et patrimoine discret.",
+        specialites: "Terroir gascon, vignobles, nature, calme rural et paysages vallonnés.",
+        map: "https://www.google.com/maps?q=Mansenc%C3%B4me%20Gers&output=embed"
+      }
+    };
+
+    function showPage(pageId, button) {
+      home.style.display = pageId === "accueil" ? "block" : "none";
+
+      pages.forEach(page => page.classList.remove("active"));
+      const target = document.getElementById(pageId);
+      if (target) target.classList.add("active");
+
+      navButtons.forEach(btn => btn.classList.remove("active"));
+      if (button) button.classList.add("active");
+
+      if (pageId === "localites") renderLocalite("cassaigne");
+      if (pageId === "actualites") renderNews();
+      if (pageId === "admin") renderAdminNews();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function selectLocalite(key, button) {
+      document.querySelectorAll(".localite").forEach(btn => btn.classList.remove("active-place"));
+      if (button) button.classList.add("active-place");
+      renderLocalite(key);
+    }
+
+    function renderLocalite(key) {
+      const place = localites[key];
+      const detail = document.getElementById("placeDetail");
+      const map = document.getElementById("localiteMap");
+      if (!place || !detail || !map) return;
+      detail.innerHTML = `
+        <h3>${place.title}</h3>
+        <p>${place.description}</p>
+        <p><strong>Spécialités et points forts :</strong> ${place.specialites}</p>
+      `;
+      map.src = place.map;
+    }
+
+    function getStoredNews() {
+      const saved = localStorage.getItem("cassaigneNews");
+      return saved ? JSON.parse(saved) : [];
+    }
+
+    function saveStoredNews(news) {
+      localStorage.setItem("cassaigneNews", JSON.stringify(news));
+    }
+
+    function renderNews() {
+      const container = document.getElementById("dynamicNews");
+      if (!container) return;
+      const allNews = [...getStoredNews(), ...defaultNews];
+      container.innerHTML = allNews.map(item => `
+        <div class="card">
+          <h3>${item.title}</h3>
+          <p><strong>${item.date}</strong></p>
+          <p>${item.content}</p>
+        </div>
+      `).join("");
+    }
+
+    function addNews() {
+      const title = document.getElementById("newsTitle").value.trim();
+      const date = document.getElementById("newsDate").value.trim();
+      const content = document.getElementById("newsContent").value.trim();
+      if (!title || !date || !content) {
+        alert("Merci de remplir le titre, la date et le contenu.");
+        return;
+      }
+      const news = getStoredNews();
+      news.unshift({ title, date, content });
+      saveStoredNews(news);
+      document.getElementById("newsTitle").value = "";
+      document.getElementById("newsDate").value = "";
+      document.getElementById("newsContent").value = "";
+      renderAdminNews();
+      alert("Actualité ajoutée. Elle apparaîtra dans l’onglet Actualités.");
+    }
+
+    function renderAdminNews() {
+      const container = document.getElementById("adminNewsList");
+      if (!container) return;
+      const news = getStoredNews();
+      if (news.length === 0) {
+        container.innerHTML = "<p>Aucune actualité ajoutée pour le moment.</p>";
+        return;
+      }
+      container.innerHTML = news.map(item => `
+        <article>
+          <h3>${item.title}</h3>
+          <p><strong>${item.date}</strong></p>
+          <p>${item.content}</p>
+        </article>
+      `).join("");
+    }
+
+    function clearNews() {
+      if (confirm("Supprimer toutes les actualités ajoutées ?")) {
+        localStorage.removeItem("cassaigneNews");
+        renderAdminNews();
+      }
+    }
+
+    function sendContactEmail() {
+      const name = document.getElementById("contactName").value.trim();
+      const email = document.getElementById("contactEmail").value.trim();
+      const message = document.getElementById("contactMessage").value.trim();
+      const subject = encodeURIComponent("Message depuis le site de Cassaigne");
+      const body = encodeURIComponent(`Nom : ${name}
+Email : ${email}
+
+Message :
+${message}`);
+      window.location.href = `mailto:mairiedecassaigne@wanadoo.fr?subject=${subject}&body=${body}`;
+    }
+
+    function subscribeNewsletter() {
+      const email = document.getElementById("newsletterEmail").value.trim();
+      const message = document.getElementById("newsletterMessage");
+      if (!email) {
+        message.textContent = "Merci d’indiquer une adresse email.";
+        return;
+      }
+      localStorage.setItem("newsletterCassaigne", email);
+      message.textContent = "Adresse enregistrée localement. Pour un vrai site, cette inscription devra être reliée à un outil d’emailing.";
+    }
+
+    function acceptCookies() {
+      localStorage.setItem("cookiesAcceptedCassaigne", "true");
+      document.getElementById("cookieBanner").classList.remove("show");
+    }
+
+    function showCookieBanner() {
+      if (!localStorage.getItem("cookiesAcceptedCassaigne")) {
+        document.getElementById("cookieBanner").classList.add("show");
+      }
+    }
+
+    function toggleChatbot() {
+      document.getElementById("chatbot").classList.toggle("open");
+    }
+
+    function addMessage(text, type) {
+      const messages = document.getElementById("chatMessages");
+      const div = document.createElement("div");
+      div.className = "message " + type;
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function sendMessage(event) {
+      event.preventDefault();
+      const input = document.getElementById("chatInput");
+      const question = input.value.trim();
+      if (!question) return;
+      addMessage(question, "user");
+      input.value = "";
+
+      const q = question.toLowerCase();
+      let answer = "Vous pouvez consulter les rubriques du site ou contacter la mairie pour plus d’informations.";
+      if (q.includes("téléphone") || q.includes("telephone") || q.includes("appeler")) answer = "Vous pouvez contacter la mairie au 05 62 28 27 87.";
+      if (q.includes("mail") || q.includes("email") || q.includes("courriel")) answer = "L’adresse email de la mairie est : mairiedecassaigne@wanadoo.fr.";
+      if (q.includes("actualité") || q.includes("actualite") || q.includes("news")) answer = "Les actualités communales sont disponibles dans l’onglet Actualités.";
+      if (q.includes("météo") || q.includes("meteo") || q.includes("temps") || q.includes("pluie")) answer = "La page Météo & chiffres donne les conditions météo, les prévisions et les chiffres clés de Cassaigne.";
+      if (q.includes("population") || q.includes("habitants") || q.includes("superficie")) answer = "Cassaigne compte environ 225 habitants et s’étend sur environ 8,58 km².";
+      if (q.includes("événement") || q.includes("evenement") || q.includes("sortie")) answer = "Les événements sont listés dans l’onglet Événements : concerts, théâtre, repas, animations et rendez-vous du village.";
+      if (q.includes("producteur") || q.includes("terroir") || q.includes("artisan") || q.includes("commerce")) answer = "La rubrique Infos pratiques présente les producteurs, artisans, commerces, circuits courts et produits du terroir.";
+      if (q.includes("alerte") || q.includes("panneaupocket")) answer = "Les alertes citoyennes peuvent être consultées via PanneauPocket, disponible dans la rubrique Infos pratiques.";
+
+      setTimeout(() => addMessage(answer, "bot"), 500);
+    }
+  showCookieBanner();
+    renderNews();
+  </script>
+</body>
+</html>
